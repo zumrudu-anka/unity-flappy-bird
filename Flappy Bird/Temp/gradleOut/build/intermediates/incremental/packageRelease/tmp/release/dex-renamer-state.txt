@@ -1,0 +1,4 @@
+#Tue Sep 08 04:19:23 EET 2020
+base.0=D\:\\Projects\\Unity\\Flappy Bird\\Flappy Bird\\Temp\\gradleOut\\build\\intermediates\\transforms\\dexMerger\\release\\0
+path.0=classes.dex
+renamed.0=classes.dex
