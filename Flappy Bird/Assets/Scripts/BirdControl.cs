@@ -8,18 +8,20 @@ public class BirdControl : MonoBehaviour
     public float velocity = 1f;
     private Rigidbody2D myRigidBody;
     public static bool isDead;
+    public static bool IsInputEnabled;
     public GameManager gameManager;
     public GameObject deathScreen;
     public Animator birdAnimator;
     void Start()
     {
+        IsInputEnabled = true;
         myRigidBody = transform.GetComponent<Rigidbody2D>();
         isDead = false;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && GetComponent<Rigidbody2D>().IsAwake())
+        if (Input.GetMouseButtonDown(0) && GetComponent<Rigidbody2D>().IsAwake() && IsInputEnabled)
         {
             myRigidBody.velocity = Vector2.up * velocity;
         }
@@ -40,6 +42,7 @@ public class BirdControl : MonoBehaviour
             isDead = true;
             birdAnimator.SetBool("isDead", true);
             deathScreen.SetActive(true);
+            IsInputEnabled = false;
             myRigidBody.velocity = Vector2.left * velocity;
             StartCoroutine(endGameWaiter());
         }

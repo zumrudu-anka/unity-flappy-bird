@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public int score;
     public Text scoreText;
-    private static int levelUpScore = 10;
+    private static int levelUpScore = 1;
     public GameObject winScreen;
     public GameObject deathScreen;
     public GameObject mainMenu;
@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     public GameObject startGamePanel;
     public GameObject bird;
     public GameObject pipeSpawner;
+    public GameObject levelUpScreen;
+    public GameObject settingsMenu;
+    public static bool isGameStarted = false;
+    public GameObject inGameMenu;
     void Start()
     {
         score = 0;
@@ -28,23 +32,27 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            startGamePanel.SetActive(true);
+            isGameStarted = true;
+            Move.speed = 0f;
             Time.timeScale = 1f;
+            StartCoroutine(beginGameAfterAnimation());
         }
 
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && isGameStarted)
         {
-            if (mainMenu.activeSelf)
+            if (inGameMenu.activeSelf)
             {
-                mainMenu.SetActive(false);
+                inGameMenu.SetActive(false);
                 Time.timeScale = 1f;
             }
             else
             {
-                mainMenu.SetActive(true);
+                inGameMenu.SetActive(true);
                 Time.timeScale = 0f;
             }
         }
@@ -61,15 +69,17 @@ public class GameManager : MonoBehaviour
             case "LevelOne":
                 if (score == levelUpScore)
                 {
-                    levelUpScore = 15;
-                    SceneManager.LoadScene("LevelTwo");
+                    int newLevelUpScore = 1;
+                    string newLevelName = "LevelTwo";
+                    levelUp(newLevelUpScore, newLevelName);
                 }
                 break;
             case "LevelTwo":
                 if (score == levelUpScore)
                 {
-                    levelUpScore = 20;
-                    SceneManager.LoadScene("LevelThree");
+                    int newLevelUpScore = 1;
+                    string newLevelName = "LevelThree";
+                    levelUp(newLevelUpScore, newLevelName);
                 }
                 break;
             case "LevelThree":
@@ -90,12 +100,29 @@ public class GameManager : MonoBehaviour
     public void restartGame()
     {
         SceneManager.LoadScene("LevelOne");
-        levelUpScore = 10;
+        levelUpScore = 1;
+        isGameStarted = false;
     }
 
     public void exitGame()
     {
         Application.Quit();
+    }
+
+    public void levelUp(int newLevelUpScore, string newLevelName)
+    {
+        levelUpScore = newLevelUpScore;
+        levelUpScreen.SetActive(true);
+        pipeSpawner.SetActive(false);
+        bird.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        bird.GetComponent<Rigidbody2D>().gravityScale = 0f;
+        GameObject[] pipes = GameObject.FindGameObjectsWithTag("Pipes");
+        foreach (GameObject pipe in pipes)
+        {
+            Destroy(pipe);
+        }
+        BirdControl.IsInputEnabled = false;
+        StartCoroutine(levelUpAnimation(newLevelName));
     }
 
     public void playGame()
@@ -108,11 +135,51 @@ public class GameManager : MonoBehaviour
         StartCoroutine(beginGameAfterAnimation());
     }
 
+    public void continueGame()
+    {
+        inGameMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void backToMenu()
+    {
+        settingsMenu.SetActive(false);
+        if (isGameStarted)
+        {
+            inGameMenu.SetActive(true);
+        }
+        else
+        {
+            mainMenu.SetActive(true);
+        }
+    }
+
+    public void showSettingsMenu()
+    {
+        if (isGameStarted)
+        {
+            inGameMenu.SetActive(false);
+        }
+        else
+        {
+            mainMenu.SetActive(false);
+        }
+        settingsMenu.SetActive(true);
+    }
+
     IEnumerator beginGameAfterAnimation()
     {
         yield return new WaitForSecondsRealtime(2f);
         Move.speed = 1f;
         bird.GetComponent<Rigidbody2D>().WakeUp();
         pipeSpawner.SetActive(true);
+        isGameStarted = true;
     }
+
+    IEnumerator levelUpAnimation(string newLevelName)
+    {
+        yield return new WaitForSecondsRealtime(3f);
+        SceneManager.LoadScene(newLevelName);
+    }
+
 }

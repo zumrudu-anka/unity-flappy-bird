@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 110598833369222649}
   m_Layer: 0
   m_Name: OrangePipes
-  m_TagString: Untagged
+  m_TagString: Pipes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,7 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cb998eebea098479938f50f5f5d9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
 --- !u!1 &4268236233761009506
 GameObject:
   m_ObjectHideFlags: 0
