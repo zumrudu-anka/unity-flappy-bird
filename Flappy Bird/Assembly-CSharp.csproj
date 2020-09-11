@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Move.cs" />
     <Compile Include="Assets\Scripts\PipeSpawner.cs" />
+    <Compile Include="Assets\Scripts\Sound.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Projects/Unity/Flappy Bird/Flappy Bird/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

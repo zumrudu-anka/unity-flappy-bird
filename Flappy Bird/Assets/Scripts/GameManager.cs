@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public int score;
     public Text scoreText;
-    private static int levelUpScore = 1;
+    private static int levelUpScore = 3;
     public GameObject winScreen;
     public GameObject deathScreen;
     public GameObject mainMenu;
@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public GameObject settingsMenu;
     public static bool isGameStarted = false;
     public GameObject inGameMenu;
+
     void Start()
     {
         score = 0;
@@ -29,11 +30,14 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "LevelOne")
         {
             Time.timeScale = 0f;
+            FindObjectOfType<AudioManager>().Play("MenuMusic");
         }
         else
         {
             startGamePanel.SetActive(true);
             isGameStarted = true;
+            //FindObjectOfType<AudioManager>().Stop("MenuMusic");
+            FindObjectOfType<AudioManager>().Play("InGameMusic");
             Move.speed = 0f;
             Time.timeScale = 1f;
             StartCoroutine(beginGameAfterAnimation());
@@ -49,11 +53,13 @@ public class GameManager : MonoBehaviour
             {
                 inGameMenu.SetActive(false);
                 Time.timeScale = 1f;
+                FindObjectOfType<AudioManager>().Play("InGameMusic");
             }
             else
             {
                 inGameMenu.SetActive(true);
                 Time.timeScale = 0f;
+                FindObjectOfType<AudioManager>().Play("MenuMusic");
             }
         }
 
@@ -69,7 +75,7 @@ public class GameManager : MonoBehaviour
             case "LevelOne":
                 if (score == levelUpScore)
                 {
-                    int newLevelUpScore = 1;
+                    int newLevelUpScore = 2;
                     string newLevelName = "LevelTwo";
                     levelUp(newLevelUpScore, newLevelName);
                 }
@@ -100,7 +106,7 @@ public class GameManager : MonoBehaviour
     public void restartGame()
     {
         SceneManager.LoadScene("LevelOne");
-        levelUpScore = 1;
+        levelUpScore = 3;
         isGameStarted = false;
     }
 
@@ -132,12 +138,14 @@ public class GameManager : MonoBehaviour
         startGamePanel.SetActive(true);
         Time.timeScale = 1f;
         Move.speed = 0f;
+        FindObjectOfType<AudioManager>().Play("InGameMusic");
         StartCoroutine(beginGameAfterAnimation());
     }
 
     public void continueGame()
     {
         inGameMenu.SetActive(false);
+        FindObjectOfType<AudioManager>().Play("InGameMusic");
         Time.timeScale = 1f;
     }
 

@@ -54,8 +54,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
-    - Class: 82
-      Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
     - Class: 91
@@ -81,15 +79,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11116}
     - Class: 114
-      Script: {instanceID: 11404}
+      Script: {instanceID: 11128}
     - Class: 114
-      Script: {instanceID: 11438}
+      Script: {instanceID: 11406}
     - Class: 114
-      Script: {instanceID: 11490}
+      Script: {instanceID: 11440}
     - Class: 114
-      Script: {instanceID: 11524}
+      Script: {instanceID: 11492}
     - Class: 114
-      Script: {instanceID: 13670}
+      Script: {instanceID: 11526}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -129,8 +127,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
-    - Class: 82
-      Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
     - Class: 91
@@ -156,15 +152,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11116}
     - Class: 114
-      Script: {instanceID: 11404}
+      Script: {instanceID: 11128}
     - Class: 114
-      Script: {instanceID: 11438}
+      Script: {instanceID: 11406}
     - Class: 114
-      Script: {instanceID: 11490}
+      Script: {instanceID: 11440}
     - Class: 114
-      Script: {instanceID: 11524}
+      Script: {instanceID: 11492}
     - Class: 114
-      Script: {instanceID: 13670}
+      Script: {instanceID: 11526}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -204,8 +200,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
-    - Class: 82
-      Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
     - Class: 91
@@ -231,15 +225,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11116}
     - Class: 114
-      Script: {instanceID: 11404}
+      Script: {instanceID: 11128}
     - Class: 114
-      Script: {instanceID: 11438}
+      Script: {instanceID: 11406}
     - Class: 114
-      Script: {instanceID: 11490}
+      Script: {instanceID: 11440}
     - Class: 114
-      Script: {instanceID: 11524}
+      Script: {instanceID: 11492}
     - Class: 114
-      Script: {instanceID: 13670}
+      Script: {instanceID: 11526}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -577,6 +571,12 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 3be2fdb7eea36a4be6eba1438ad2e1ca
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AudioManager
+  - hash:
+      serializedVersion: 2
       Hash: 88cc9df3c6fc697bfbeacd24c0d6f2d7
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
@@ -695,15 +695,9 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: AudioManager
   platform: 13
   scenePathNames:
   - Assets/Scenes/LevelOne.unity
   - Assets/Scenes/LevelTwo.unity
   - Assets/Scenes/LevelThree.unity
-  playerPath: D:/Projects/Unity/Flappy Bird/Flappy Bird/AndroidApks/BlueFlappy4.apk
+  playerPath: D:/Projects/Unity/Flappy Bird/Flappy Bird/AndroidApks/BlueFlappy6.apk

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BirdControl : MonoBehaviour
@@ -12,6 +11,7 @@ public class BirdControl : MonoBehaviour
     public GameManager gameManager;
     public GameObject deathScreen;
     public Animator birdAnimator;
+
     void Start()
     {
         IsInputEnabled = true;
@@ -45,6 +45,7 @@ public class BirdControl : MonoBehaviour
             IsInputEnabled = false;
             myRigidBody.velocity = Vector2.left * velocity;
             StartCoroutine(endGameWaiter());
+            FindObjectOfType<AudioManager>().Play("BumpEffect");
         }
     }
 
